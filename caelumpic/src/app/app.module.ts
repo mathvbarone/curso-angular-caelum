@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { FotoModule } from './Foto/foto.module';
@@ -8,7 +9,8 @@ import { FotoModule } from './Foto/foto.module';
   declarations: [ AppComponent ],
   imports: [
     BrowserModule,
-    FotoModule
+    FotoModule,
+    HttpModule
   ],
   bootstrap: [AppComponent]
 })
