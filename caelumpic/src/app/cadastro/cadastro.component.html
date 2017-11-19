@@ -1,0 +1,32 @@
+// 6.1, 6.3, 6.5, 6.9
+<div class="jumboron">
+  <h1 class="text-center">{{ foto.titulo }}</h1>
+</div>
+<div class="col-sm-6">
+  <form action="" (submit)="salvar($event)">
+
+    <div class="form-group">
+      <label for="">Titulo</label>
+      <input [(ngModel)]="foto.titulo" name="titulo" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">URL</label>
+      <input [(ngModel)]="foto.url" name="url" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="">Descrição</label>
+      <textarea [(ngModel)]="foto.descricao" name="descricao" class="form-control" id="" cols="30" rows="10">
+        {{ foto.descricao }}
+      </textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Salvar</button>
+    <a [routerLink]="['/']" class="btn btn-danger">Voltar</a>
+  </form>
+</div>
+
+<aside class="col-sm-6">
+  <Foto url="{{ foto.url }}" titulo="{{ foto.titulo }}"></Foto>
+</aside>
