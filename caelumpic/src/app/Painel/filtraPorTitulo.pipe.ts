@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core'
+import { FotoComponent } from '../Foto/foto.component';
 
 @Pipe({
  name: 'filtraPorTitulo'
@@ -9,15 +10,17 @@ export class FiltraPorTituloPipe implements PipeTransform {
   transform(elementos, digitado) {
     //console.log(elementos, digitado)
 
-    return elementos.filter((elemento) => {
-            // digitado | titulo
-            const tituloAjustado = elemento.titulo.toLowerCase()
-            const digitadoAjustado = digitado.toLowerCase()
+    return elementos
 
-            const resultado = tituloAjustado.includes(digitadoAjustado)
+   /* .filter((elemento: FotoComponent) => {
+      // digitado | titulo
+      const tituloAjustado = elemento.titulo.toLowerCase()
+      const digitadoAjustado = digitado.toLowerCase()
 
-            return resultado
-          })
+      const resultado = tituloAjustado.includes(digitadoAjustado)
+
+      return resultado
+    })*/
 
   }
 }

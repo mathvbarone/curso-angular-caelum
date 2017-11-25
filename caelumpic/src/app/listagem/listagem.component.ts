@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import { FotoComponent } from '../Foto/foto.component'
+import { FotoService } from '../Foto/foto.service';
 
 @Component({
   selector: 'app-listagem',
@@ -11,19 +12,15 @@ export class ListagemComponent {
 
   title: string = 'Caelumpic';
   fotos: FotoComponent[] = []
-  //fotos: Object[] = []
+  servico: FotoService
 
-  constructor(http: Http) {
-    // Exercicio 3.9
-    const stream = http.get('http://localhost:3000/v1/fotos')
+  constructor(servico: FotoService) {
+    this.servico = servico
 
-    stream
-    .map((dados) => dados.json())
-    .subscribe((dados) => {
-      // this: Contexto Léxico(Leitura)
-      this.fotos = dados
-      //console.log(this)
-    })
+    servico.pegarTodos()
+      .subscribe(dados => {
+        this.fotos = dados
+      })
   }
 
 }
