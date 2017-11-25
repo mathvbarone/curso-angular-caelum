@@ -4,7 +4,7 @@ import { Http, Headers } from '@angular/http'
 import { FotoService } from '../Foto/foto.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-//import { Headers } from '@angular/http/src/headers';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 
 @Component({
   selector: 'app-cadastro',
@@ -16,11 +16,21 @@ export class CadastroComponent {
   foto: FotoComponent
   servico: FotoService
   router: Router
+  formCadastro: FormGroup
 
-  constructor(servico: FotoService, rota: ActivatedRoute, router: Router) {
+  constructor(servico: FotoService,
+              rota: ActivatedRoute,
+              router: Router,
+              formBuilder: FormBuilder) {
     this.foto = new FotoComponent()
     this.router = router
     this.servico = servico
+
+    this.formCadastro = formBuilder.group({
+      titulo: ['', Validators.required],
+      url: ['', Validators.required],
+      descricao: ['', Validators.required]
+    })
 
     rota.params.subscribe(
       (parametros) => {

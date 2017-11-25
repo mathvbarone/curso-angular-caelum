@@ -2,18 +2,23 @@
   <h1 class="text-center">{{ foto.titulo }}</h1>
 </div>
 <div class="col-sm-6">
-  <form #formCadastro="ngForm" action="" (submit)="salvar($event)">
+  <form [formGroup]="formCadastro" action="" (submit)="salvar($event)">
+
+<h3>
+  Formulario e valido? {{ formCadastro.invalid }} </h3>
 
     <div class="form-group">
       <label for="">Titulo</label>
       <input [(ngModel)]="foto.titulo"
               name="titulo"
+              formControlName="titulo"
               type="text"
-              class="form-control"
-              #titulo="ngModel"
-              required>
+              class="form-control">
     </div>
-    <div class="alert alert-danger" *ngIf="titulo.invalid && !titulo.pristine">
+    <div class="alert alert-danger" *ngIf="
+        !formCadastro.controls.titulo.pristine &&
+        formCadastro.controls.titulo.invalid
+        ">
             Título é obrigatório
     </div>
 
@@ -22,13 +27,14 @@
       <label for="">URL</label>
       <input [(ngModel)]="foto.url" 
        name="url"
+       formControlName="url"
        type="text" 
-       #url="ngModel"
-       class="form-control"
-       required>
+       class="form-control">
     </div>
 
-    <div class="alert alert-danger" *ngIf="url.invalid && !url.pristine">
+    <div class="alert alert-danger" *ngIf="
+    !formCadastro.controls.url.pristine &&
+    formCadastro.controls.url.invalid">
         URL é obrigatória
     </div>
 
@@ -38,21 +44,19 @@
        [(ngModel)]="foto.descricao"
       name="descricao"
       class="form-control"
-      #descricao="ngModel"
-      id=""
-      cols="30"
-      rows="10"
-      required>
+      formControlName="descricao">
         {{ foto.descricao }}
       </textarea>
     </div>
 
-    <div class="alert alert-danger" *ngIf="descricao.invalid && !descricao.pristine">
+    <div class="alert alert-danger" *ngIf="
+    !formCadastro.controls.descricao.pristine &&
+    formCadastro.controls.descricao.invalid">
         Descrição é obrigatória
     </div>
 
     <button
-    [disabled] = "formCadastro.form.invalid"
+    [disabled]="formCadastro.invalid"
     class="btn btn-primary"
     type="submit"
     >
