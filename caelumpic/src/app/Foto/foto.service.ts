@@ -34,8 +34,20 @@ export class FotoService {
         return stream
     }
 
-    apagar(foto: FotoComponent) {
+    apagar(foto: FotoComponent): Observable<Response>{
         return this.http.delete(`${this.URL}/${foto._id}`)
+    }
+    pegaUm(id: string): Observable<FotoComponent>{
+        return this.http.get(`${this.URL}/${id}`)
+                        .map(dados => dados.json())
+    }
+
+    atualiza(foto: FotoComponent): Observable<Response>{
+        return this.http.put(
+                                `${this.URL}/${foto._id}`,
+                                foto,
+                                { headers: this.cabecalho }
+                            )
     }
 
 }
