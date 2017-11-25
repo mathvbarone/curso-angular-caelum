@@ -4,12 +4,6 @@
 <div class="col-sm-6">
   <form #formCadastro="ngForm" action="" (submit)="salvar($event)">
 
-
-    <h3>
-        Formulario ta valido?{{ formCadastro.form.valid }}
-    </h3>
-    
-
     <div class="form-group">
       <label for="">Titulo</label>
       <input [(ngModel)]="foto.titulo"
@@ -20,20 +14,41 @@
               required>
     </div>
     <div class="alert alert-danger" *ngIf="titulo.invalid && !titulo.pristine">
-            Titulo obrigatorio
+            Título é obrigatório
     </div>
 
 
     <div class="form-group">
       <label for="">URL</label>
-      <input [(ngModel)]="foto.url" name="url" type="text" class="form-control">
+      <input [(ngModel)]="foto.url" 
+       name="url"
+       type="text" 
+       #url="ngModel"
+       class="form-control"
+       required>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="url.invalid && !url.pristine">
+        URL é obrigatória
     </div>
 
     <div class="form-group">
       <label for="">Descrição</label>
-      <textarea [(ngModel)]="foto.descricao" name="descricao" class="form-control" id="" cols="30" rows="10">
+      <textarea
+       [(ngModel)]="foto.descricao"
+      name="descricao"
+      class="form-control"
+      #descricao="ngModel"
+      id=""
+      cols="30"
+      rows="10"
+      required>
         {{ foto.descricao }}
       </textarea>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="descricao.invalid && !descricao.pristine">
+        Descrição é obrigatória
     </div>
 
     <button
