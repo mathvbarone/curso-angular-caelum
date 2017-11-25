@@ -1,14 +1,28 @@
-// 6.1, 6.3, 6.5, 6.9
 <div class="jumboron">
   <h1 class="text-center">{{ foto.titulo }}</h1>
 </div>
 <div class="col-sm-6">
-  <form action="" (submit)="salvar($event)">
+  <form #formCadastro="ngForm" action="" (submit)="salvar($event)">
+
+
+    <h3>
+        Formulario ta valido?{{ formCadastro.form.valid }}
+    </h3>
+    
 
     <div class="form-group">
       <label for="">Titulo</label>
-      <input [(ngModel)]="foto.titulo" name="titulo" type="text" class="form-control">
+      <input [(ngModel)]="foto.titulo"
+              name="titulo"
+              type="text"
+              class="form-control"
+              #titulo="ngModel"
+              required>
     </div>
+    <div class="alert alert-danger" *ngIf="titulo.invalid && !titulo.pristine">
+            Titulo obrigatorio
+    </div>
+
 
     <div class="form-group">
       <label for="">URL</label>
@@ -22,7 +36,13 @@
       </textarea>
     </div>
 
-    <button class="btn btn-primary" type="submit">Salvar</button>
+    <button
+    [disabled] = "formCadastro.form.invalid"
+    class="btn btn-primary"
+    type="submit"
+    >
+    Salvar
+    </button>
     <a [routerLink]="['/']" class="btn btn-danger">Voltar</a>
   </form>
 </div>

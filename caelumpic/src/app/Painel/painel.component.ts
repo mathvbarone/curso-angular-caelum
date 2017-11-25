@@ -8,9 +8,6 @@ import { constructDependencies } from '@angular/core/src/di/reflective_provider'
 export class PainelComponent implements OnInit {
   @Input() titulo: string
 
-  constructor() {
-    console.log(this.titulo)
-  }
   // 5.13
   ngOnInit() {
     if(this.titulo.length > 7) {

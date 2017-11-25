@@ -7,11 +7,13 @@
 <section class="container">
   <div class="btn-group areaDeOpcoes">
     <a class="btn btn-primary" [routerLink]="['/cadastro']">Nova Foto</a>
+    <a class="btn btn-warning" [routerLink]="['login']" title="Login">Login</a>
     <input #inputDaBusca (keyup)="0" type="text" class="form-control" style="border: 1px solid black ;">
   </div>
 </section>
 
 <section class="container">
+
   <Painel *ngFor="let foto of fotos | filtraPorTitulo: inputDaBusca.value" titulo="{{ foto.titulo | uppercase }}" class="col-md-2 col-sm-12">
     <a [routerLink]="['/cadastro', foto._id]">
       <Foto url="{{ foto.url }}" titulo="{{ foto.titulo }}"></Foto>

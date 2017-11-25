@@ -3,6 +3,7 @@ import { FotoComponent } from '../Foto/foto.component';
 import { Http, Headers } from '@angular/http'
 import { FotoService } from '../Foto/foto.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 //import { Headers } from '@angular/http/src/headers';
 
 @Component({
@@ -14,9 +15,11 @@ export class CadastroComponent {
 
   foto: FotoComponent
   servico: FotoService
+  router: Router
 
-  constructor(servico: FotoService, rota: ActivatedRoute) {
+  constructor(servico: FotoService, rota: ActivatedRoute, router: Router) {
     this.foto = new FotoComponent()
+    this.router = router
     this.servico = servico
 
     rota.params.subscribe(
@@ -43,6 +46,7 @@ export class CadastroComponent {
         .subscribe(
         () => {
           console.log("Atualizou ai?")
+          this.router.navigate([""])
         }
         )
     } else {

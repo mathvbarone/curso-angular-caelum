@@ -11,14 +11,16 @@ import { ListagemComponent } from './listagem/listagem.component';
 import { CadastroComponent } from './cadastro/cadastro.component'
 import { roteamento } from './roteamento';
 import { Page404Component } from './page404/page404.component'
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     ListagemComponent,
     CadastroComponent,
-    Page404Component
+    Page404Component,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
