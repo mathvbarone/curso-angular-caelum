@@ -10,9 +10,7 @@ export class FiltraPorTituloPipe implements PipeTransform {
   transform(elementos, digitado) {
     //console.log(elementos, digitado)
 
-    return elementos
-
-   /* .filter((elemento: FotoComponent) => {
+    return elementos.filter((elemento: FotoComponent) => {
       // digitado | titulo
       const tituloAjustado = elemento.titulo.toLowerCase()
       const digitadoAjustado = digitado.toLowerCase()
@@ -20,7 +18,7 @@ export class FiltraPorTituloPipe implements PipeTransform {
       const resultado = tituloAjustado.includes(digitadoAjustado)
 
       return resultado
-    })*/
+    })
 
   }
 }

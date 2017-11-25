@@ -7,6 +7,4 @@ import { FotoService } from './foto.service'
   exports: [ FotoComponent ],
   providers: [ FotoService ]
 })
-export class FotoModule {
-
-}
+export class FotoModule {}

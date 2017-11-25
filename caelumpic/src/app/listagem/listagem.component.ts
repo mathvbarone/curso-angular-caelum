@@ -22,8 +22,25 @@ export class ListagemComponent {
         this.fotos = dados
       })
   }
+  
+  remover(foto: FotoComponent){
+    this.servico.apagar(foto)
+                .subscribe(
+                  () => {
+                    console.log("Ta apagando?")
 
+                    const novaListaDeFotos = this.fotos.filter(e => {
+                      return e._id != foto._id
+                    })
+
+                    this.fotos = novaListaDeFotos
+                  }
+                )
+  }
 }
+
+
+
 
 
 export default {

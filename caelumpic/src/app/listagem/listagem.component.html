@@ -14,5 +14,8 @@
 <section class="container">
   <Painel *ngFor="let foto of fotos | filtraPorTitulo: inputDaBusca.value" titulo="{{ foto.titulo | uppercase }}" class="col-md-2 col-sm-12">
     <Foto url="{{ foto.url }}" titulo="{{ foto.titulo }}"></Foto>
+    <button class="btn btn-danger btn-block"
+            (click)="remover(foto)">
+            Remover</button>
   </Painel>
 </section>

@@ -11,27 +11,31 @@ export class FotoService {
     URL: string = 'http://localhost:3000/v1/fotos'
     cabecalho: Headers
 
-    constructor( http:Http ){
+    constructor(http: Http) {
         this.http = http
         this.cabecalho = new Headers()
         this.cabecalho.append('Content-type', 'application/json')
     }
 
-    pegarTodos():Observable<FotoComponent[]>{
+    pegarTodos(): Observable<FotoComponent[]> {
         const stream = this.http.get(this.URL)
-                            .map(dados => dados.json())
+            .map(dados => dados.json())
 
         return stream
     }
 
-    cadastrar( foto: FotoComponent ): Observable<Response> {
-      const stream = this.http.post(
-          this.URL,
-          JSON.stringify(foto),
-          {headers: this.cabecalho}
-      ) 
-      
-      return stream
+    cadastrar(foto: FotoComponent): Observable<Response> {
+        const stream = this.http.post(
+            this.URL,
+            JSON.stringify(foto),
+            { headers: this.cabecalho }
+        )
+
+        return stream
+    }
+
+    apagar(foto: FotoComponent) {
+        return this.http.delete(`${this.URL}/${foto._id}`)
     }
 
 }

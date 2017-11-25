@@ -37,7 +37,6 @@ export class CadastroComponent {
                 )
     //console.log(JSON.stringify(this.foto))
 
-
   }
 
 }
